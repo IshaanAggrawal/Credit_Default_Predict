@@ -1,162 +1,282 @@
 /* -------------------------------------------------------
-   1. GLOBAL STREAMLIT OVERRIDES
+   1. GLOBAL & LAYOUT
    ------------------------------------------------------- */
-/* Main Background */
+body {
+    color: #1a1a1a;
+}
+
 .stApp {
-    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    background: #f0f2f6;
     font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* Text Colors */
-h1, h2, h3, h4, h5, h6, p, span, div, label {
+/* -------------------------------------------------------
+   2. HEADER
+   ------------------------------------------------------- */
+.main-header {
+    font-size: 2.75rem !important;
+    font-weight: 900 !important;
+    text-align: center;
     color: #1a1a1a !important;
+    padding-top: 20px;
+    letter-spacing: -1.5px;
 }
 
-/* Headings */
-h1 {
-    font-weight: 900 !important;
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-    font-size: 2.5rem !important;
-    color: #000000 !important;
+.sub-header {
+    font-size: 1.1rem !important;
+    text-align: center;
+    color: #555 !important;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.header-divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ddd, transparent);
+    margin: 1rem auto;
+    width: 80%;
+}
+
+/* -------------------------------------------------------
+   3. SIDEBAR
+   ------------------------------------------------------- */
+[data-testid="stSidebar"] {
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+}
+
+/* -------------------------------------------------------
+   4. FORMS & INPUTS
+   ------------------------------------------------------- */
+div[data-testid="stForm"] {
+    background: #ffffff;
+    padding: 2rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e0e0;
 }
 
 h2 {
     font-weight: 700 !important;
-    font-size: 1.6rem !important;
-    margin-top: 25px !important;
-    margin-bottom: 15px !important;
+    font-size: 1.75rem !important;
+    margin-bottom: 20px !important;
     color: #1a1a1a !important;
+    border-bottom: 3px solid #0066cc;
+    padding-bottom: 10px;
 }
 
 h4 {
     font-weight: 600 !important;
     color: #333333 !important;
+    font-size: 1.1rem !important;
 }
 
-/* -------------------------------------------------------
-   2. COMPONENT STYLING
-   ------------------------------------------------------- */
-/* Sidebar */
-[data-testid="stSidebar"] {
-    background-color: #f9f9f9;
-    border-right: 1px solid #e0e0e0;
-}
-
-/* Input Fields */
-.stNumberInput input, .stSelectbox div[data-baseweb="select"], .stSlider {
-    border: 2px solid #ddd !important;
+/* General Input Styling */
+.stNumberInput input, .stSelectbox div[data-baseweb="select"] {
+    border: 1px solid #ccc !important;
     border-radius: 8px !important;
-    color: #1a1a1a !important;
     font-weight: 500;
-    background-color: #ffffff !important;
+    transition: all 0.2s ease-in-out;
 }
 
-.stNumberInput input:focus, .stSelectbox div[data-baseweb="select"]:focus {
-    border-color: #0066cc !important;
-    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1) !important;
-}
-
-/* Selectbox styling - ensure light background and dark text */
-[data-baseweb="select"] {
-    background-color: #ffffff !important;
-}
-
-[data-baseweb="select"] input {
+.stNumberInput input {
+    background-color: #fafafa !important;
     color: #1a1a1a !important;
+}
+
+/* SELECTBOX FIX: Dark background with white text */
+.stSelectbox div[data-baseweb="select"] {
+    background-color: #262730 !important; /* Dark background for the selectbox itself */
+}
+
+.stSelectbox div[data-baseweb="select"] div,
+.stSelectbox div[data-baseweb="select"] input {
+    color: #ffffff !important; /* White text for selected item and input */
+}
+
+
+.stNumberInput input:focus, .stSelectbox div[data-baseweb="select"]:focus-within {
+    border-color: #0066cc !important;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15) !important;
     background-color: #ffffff !important;
 }
+
+/* Ensure focused selectbox text is readable */
+.stSelectbox div[data-baseweb="select"]:focus-within div,
+.stSelectbox div[data-baseweb="select"]:focus-within input {
+    color: #1a1a1a !important;
+}
+
 
 /* Slider Styling */
-.stSlider {
-    padding: 10px 0 !important;
+.slider-label {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #333;
 }
 
-/* Modern Button */
+/* Submit Button in Form */
 .stButton > button {
-    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
     color: #FFFFFF !important;
     font-size: 16px;
     font-weight: 700;
-    padding: 1rem 2rem;
-    border-radius: 12px;
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
     border: none;
     text-transform: uppercase;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
     letter-spacing: 0.5px;
 }
 
 .stButton > button:hover {
-    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
-    color: #FFFFFF !important;
 }
 
 .stButton > button:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.15);
 }
 
 /* -------------------------------------------------------
-   3. CUSTOM HTML TEMPLATE STYLES
+   5. RESULT CARD
    ------------------------------------------------------- */
 .result-container {
-    border: 3px solid #000000;
-    padding: 40px;
+    border: 2px solid transparent;
+    padding: 30px;
     border-radius: 16px;
     margin-top: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     text-align: center;
     background-color: #ffffff;
+    animation: slideIn 0.5s ease-out;
+    transition: all 0.3s ease;
 }
 
-.status-critical {
-    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
-    color: #FFFFFF !important;
-    border-color: #d32f2f;
+.result-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
 }
 
-.status-high {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
-    color: #FFFFFF !important;
-    border-color: #d32f2f;
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.status-medium {
-    background: linear-gradient(135deg, #ffd54f 0%, #ffb300 100%);
-    color: #1a1a1a !important;
-    border-color: #f57f17;
+.result-title {
+    margin: 0 0 20px 0 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
 }
 
-.status-low {
-    background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
-    color: #FFFFFF !important;
-    border-color: #2e7d32;
+.result-content {
+    margin: 20px 0;
+}
+
+.emoji-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: bounce 0.8s ease-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.metric-label {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    display: block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #666 !important;
 }
 
 .risk-score {
-    font-size: 56px;
-    font-weight: 900;
-    margin: 20px 0;
-    letter-spacing: -1px;
+    font-size: 4rem !important;
+    font-weight: 800 !important;
+    margin: 10px 0 !important;
+    letter-spacing: -1.5px;
 }
 
 .risk-level-badge {
     display: inline-block;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 14px;
-    margin: 10px 0;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    margin: 15px 0 0 0;
+    border: 2px solid;
+    text-transform: uppercase;
 }
 
 .recommendation {
-    font-size: 18px;
-    font-weight: 600;
-    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    border-top: 2px solid;
     padding-top: 20px;
-    margin-top: 20px;
+    margin-top: 25px;
     letter-spacing: 0.3px;
+}
+
+/* -------------------------------------------------------
+   6. STATUS COLORS (SIMPLIFIED)
+   ------------------------------------------------------- */
+
+/* Critical Risk */
+.status-critical {
+    background: #1a1a1a !important;
+    border-color: #dc3545 !important;
+}
+.status-critical .metric-label, .status-critical .recommendation, .status-critical .risk-level-badge, .status-critical .risk-score, .status-critical .result-title {
+    color: #FFFFFF !important;
+}
+.status-critical .risk-level-badge { background-color: #dc3545; border-color: #dc3545; }
+.status-critical .recommendation { border-top-color: rgba(255, 255, 255, 0.3) !important; }
+
+/* High Risk */
+.status-high {
+    background-color: #fff4f4 !important;
+    border-color: #ff6b6b;
+}
+.status-high .risk-score, .status-high .recommendation, .status-high .result-title { color: #d32f2f !important; }
+.status-high .risk-level-badge { color: #d32f2f; background-color: #ffdde0; border-color: #ff6b6b; }
+.status-high .recommendation { border-top-color: #ffdde0 !important; }
+
+/* Moderate Risk */
+.status-medium {
+    background-color: #fffaf0 !important;
+    border-color: #ffc107;
+}
+.status-medium .risk-score, .status-medium .recommendation, .status-medium .result-title { color: #f57f17 !important; }
+.status-medium .risk-level-badge { color: #f57f17; background-color: #fff0c7; border-color: #ffc107; }
+.status-medium .recommendation { border-top-color: #fff0c7 !important; }
+
+/* Low Risk */
+.status-low {
+    background-color: #f3f9f3 !important;
+    border-color: #66bb6a;
+}
+.status-low .risk-score, .status-low .recommendation, .status-low .result-title { color: #2e7d32 !important; }
+.status-low .risk-level-badge { color: #2e7d32; background-color: #d9eed9; border-color: #66bb6a; }
+.status-low .recommendation { border-top-color: #d9eed9 !important; }
+
+
+/* -------------------------------------------------------
+   7. RESPONSIVE
+   ------------------------------------------------------- */
+@media (max-width: 768px) {
+    .result-container { padding: 25px 15px; }
+    .risk-score { font-size: 3.5rem !important; }
+    .emoji-icon { font-size: 4rem; }
+    div[data-testid="stForm"] { padding: 1.5rem; }
 }
