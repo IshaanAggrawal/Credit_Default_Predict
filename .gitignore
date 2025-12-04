@@ -1,0 +1,38 @@
+# Python byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments (Local folders)
+venv/
+env/
+.venv/
+
+# Distribution / Packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Mac & Windows system files
+.DS_Store
+Thumbs.db
+
+# Environment Variables (Keep secrets safe!)
+.env
+
+# Note: We are NOT ignoring .pkl files because 
+# Render needs them to run your app.
+# If your model files are larger than 100MB, 
+# you will need to use Git LFS.

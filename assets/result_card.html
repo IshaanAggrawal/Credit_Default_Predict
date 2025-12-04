@@ -1,0 +1,14 @@
+<div class="result-container {css_class}">
+    <h2 style="margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-size: 24px;">Risk Assessment Result</h2>
+    
+    <div style="margin: 25px 0;">
+        <div style="font-size: 56px; margin-bottom: 15px;">{emoji}</div>
+        <span style="font-size: 16px; font-weight: 500; opacity: 0.95; display: block; margin-bottom: 10px;">PROBABILITY OF DEFAULT</span>
+        <div class="risk-score">{probability}</div>
+        <div class="risk-level-badge" style="background-color: rgba(255,255,255,0.2); margin-top: 10px;">Risk Level: <strong>{risk_level}</strong></div>
+    </div>
+
+    <div class="recommendation">
+        <strong style="font-size: 16px; line-height: 1.6; word-wrap: break-word;">{verdict_text}</strong>
+    </div>
+</div>
